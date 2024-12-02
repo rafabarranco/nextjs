@@ -3,6 +3,8 @@
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 
+import ThemeToggle from '@/app/components/ThemeToggle';
+
 export default function Header() {
   const { data: session, status } = useSession();
   if (status === 'unauthenticated' || status === 'loading') return;
@@ -16,6 +18,7 @@ export default function Header() {
         height={72}
       />
       <button onClick={() => signOut({ callbackUrl: '/' })}>Sign Out</button>
+      <ThemeToggle />
     </nav>
   );
 }
