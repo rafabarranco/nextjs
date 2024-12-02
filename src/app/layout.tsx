@@ -18,7 +18,7 @@ export default function Main({ children }: MainProps) {
   return (
     <html lang="en">
       <body>
-        <ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SessionProvider>
             <Layout>{children}</Layout>
           </SessionProvider>
