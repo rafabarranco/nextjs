@@ -1,16 +1,12 @@
-import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 
 import Chart from '../components/Chart';
+import DashboardWelcome from '../components/DashboardWelcome';
 
-export default async function DashboardPage() {
-  const session = await getServerSession();
-
+export default function DashboardPage() {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="mb-4 text-xl font-bold first-letter:uppercase">
-        Welcome to Dashboard, {session?.user?.name}
-      </h1>
+      <DashboardWelcome />
       <div className="w-full md:w-3/4 xl:w-2/3">
         <Chart />
       </div>
