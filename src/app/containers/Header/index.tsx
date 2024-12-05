@@ -34,7 +34,7 @@ export default function Header() {
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
   return (
-    <nav className="bg-white dark:bg-black shadow-md">
+    <nav className="bg-white dark:bg-black shadow-md sticky top-0 z-10 mb-4 w-full">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <UserInfo name={session?.user?.name as string} />
         <UserDropdown
