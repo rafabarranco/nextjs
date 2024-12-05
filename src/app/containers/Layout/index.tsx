@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Footer from '../Footer';
+
 import Header from '../Header';
 
 interface LayoutProps {
@@ -10,10 +10,9 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main>{children}</main>
-      <Footer />
+      <main className="flex-grow">{children}</main>
     </div>
   );
 }

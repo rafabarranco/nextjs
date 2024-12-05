@@ -8,8 +8,8 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="mb-4 text-xl font-bold">
-        Welcome to Dashboard, {session?.user?.name?.toLocaleUpperCase()}
+      <h1 className="mb-4 text-xl font-bold first-letter:uppercase">
+        Welcome to Dashboard, {session?.user?.name}
       </h1>
       <div className="w-full md:w-3/4 xl:w-2/3">
         <Chart />
