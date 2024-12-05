@@ -1,24 +1,25 @@
 'use client';
 
-import { useMemo } from 'react';
 import { FixedSizeList as List } from 'react-window';
 
-import { Prize } from '@/app/models/Prize';
+import { useNobelPrizes } from '@/app/hooks/useNobelPrizes';
 
-interface NobelsListProps {
-  prizes: Prize[];
-}
+export default function NobelsList() {
+  const { data, isLoading, error } = useNobelPrizes();
 
-interface RowProps {
-  index: number;
-  style: React.CSSProperties;
-}
+  if (isLoading) return <p>Loading list...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-const NobelsList: React.FC<NobelsListProps> = ({ prizes }) => {
-  const data = useMemo(() => prizes, [prizes]);
+  const prizes = data.prizes;
 
-  const Row = ({ index, style }: RowProps) => {
-    const prize = data[index];
+  const Row = ({
+    index,
+    style,
+  }: {
+    index: number;
+    style: React.CSSProperties;
+  }) => {
+    const prize = prizes[index];
     return (
       <div style={style} className="flex justify-between px-4 py-2 border-b">
         <span>{prize.year}</span>
@@ -31,7 +32,7 @@ const NobelsList: React.FC<NobelsListProps> = ({ prizes }) => {
   return (
     <List
       height={500}
-      itemCount={data.length}
+      itemCount={prizes.length}
       itemSize={50}
       width="100%"
       className="rounded-lg"
@@ -39,6 +40,4 @@ const NobelsList: React.FC<NobelsListProps> = ({ prizes }) => {
       {Row}
     </List>
   );
-};
-
-export default NobelsList;
+}

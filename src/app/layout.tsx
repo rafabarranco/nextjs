@@ -1,5 +1,6 @@
-import SessionProvider from '@/providers/SessionProvider';
-import ThemeProvider from '@/providers/ThemeProvider';
+import SessionProvider from '@/app/providers/SessionProvider';
+import ThemeProvider from '@/app/providers/ThemeProvider';
+import ReactQueryProvider from '@/app/providers/ReactQueryProvider';
 
 import Layout from './containers/Layout';
 
@@ -19,9 +20,11 @@ export default function Main({ children }: MainProps) {
     <html lang="en">
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <SessionProvider>
-            <Layout>{children}</Layout>
-          </SessionProvider>
+          <ReactQueryProvider>
+            <SessionProvider>
+              <Layout>{children}</Layout>
+            </SessionProvider>
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>
