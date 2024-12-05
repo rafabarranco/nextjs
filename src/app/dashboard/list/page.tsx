@@ -1,6 +1,6 @@
 import NobelsList from '../../components/NobelsList';
 
-export default async function ListPage() {
+export default function ListPage() {
   return (
     <div className="w-full h-screen flex flex-col items-center">
       <h1 className="mb-4 text-xl font-bold">Nobel Prize List</h1>
